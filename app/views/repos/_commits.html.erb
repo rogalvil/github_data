@@ -1,0 +1,15 @@
+<div><b>Commits</b></div>
+<% @commits.each do |commit| %>
+  <% #= commit.inspect %>
+  <div>
+    <div>sha <%= commit.sha %></div>
+    <div>
+      <div><b>Parents</b></div>
+      <% commit.parents.each do |parent| %>
+        <div><%= parent.sha %></div>
+      <% end %>
+    </div>
+    <br />
+  </div>
+  <br />
+<% end %>

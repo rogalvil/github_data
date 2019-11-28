@@ -1,0 +1,12 @@
+<% @branches.each do |branch| %>
+  <div>
+    <div>
+      <span>
+        <% #= branch.inspect %>
+        <%= link_to branch.commit.sha, repo_branch_path(params[:repo_id], branch.commit.sha) %>
+      </span>
+       -
+      <span><%= branch.name %></span>
+    </div>
+  </div>
+<% end %>

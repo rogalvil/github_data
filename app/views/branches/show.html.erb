@@ -1,0 +1,16 @@
+<% #= @repo.inspect %>
+
+<%= @repo_rels.inspect %>
+<% #= @commidt_rels.inspect %>
+<% #@rels.each do |rel| %>
+  <div>
+    <%#= rel.inspect %>
+  </div>
+<% #end %>
+
+<% #= render "branches" %>
+
+<div>
+  <%= link_to "Pull requests", pulls_repo_branch_path(params[:repo_id], params[:id]) %>
+</div>
+

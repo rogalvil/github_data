@@ -1,0 +1,6 @@
+<% #= @repos.inspect %>
+<% @repos.each do |repo| %>
+  <div>
+    <%= link_to repo.name, repo_path(repo.name) %>
+  </div>
+<% end %>

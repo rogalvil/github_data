@@ -1,0 +1,8 @@
+<div><b>Merges</b></div>
+<% @merges.each do |merge| %>
+  <div>
+    <span><% #= merge.commit.sha %></span>
+       -
+    <span><%= merge.inspect %></span>
+  </div>
+<% end %>
