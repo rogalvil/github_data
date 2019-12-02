@@ -1,3 +1,9 @@
+<%= form_with url: master_from_initial_repo_commits_path(params[:repo_id]), method: :get, local: true do |f| %>
+  <%= f.datetime_field :from_at, value: params[:from_at], required: true %>
+  <%= f.datetime_field :to_at, value: params[:to_at], required: true %>
+  <%= f.submit "Filtrar", class: '' %>
+<% end %>
+
 <% @commits.each do |commit| %>
   <% #= commit.inspect %>
   <div>
@@ -5,6 +11,10 @@
     <div>
       commiter
       <%= commit.commit.committer.name %>
+    </div>
+    <div>
+      date
+      <%= commit.commit.committer.date %>
     </div>
     <div>tree <%= commit.commit.tree.sha %></div>
     <div>message <%= commit.commit.message %></div>

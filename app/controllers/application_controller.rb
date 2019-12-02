@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :set_user
 
   def set_client
-    @client = Octokit::Client.new(:access_token => '7e14382fd469d939e7bbcf2c48b5798ae77844b0')
+    @client = Octokit::Client.new(:access_token => '0dfe95fcd7723dcd0593b59171b1ee223d8ca7b1')
   end
 
   def set_user
