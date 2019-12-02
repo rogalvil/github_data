@@ -10,7 +10,6 @@ class ReposController < ApplicationController
     @repo = @client.repo "rogalvil/#{params[:id]}"
     @rels = @repo.rels
     @branches = @repo.rels[:branches].get.data
-    @repos = @repo.rels[:repos].get.data
   end
 
   private
