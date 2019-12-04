@@ -6,7 +6,7 @@ class CommitsController < ApplicationController
     @commits = get_commits(template)
   end
 
-  def master_from_initial
+  def master
     template = @repo.rels[:commits].get
     all_commits = get_commits(template)
     first_commit = get_first_commit(all_commits.reverse)
@@ -51,6 +51,6 @@ class CommitsController < ApplicationController
   end
 
   def set_repo
-    @repo = @client.repo "rogalvil/#{params[:repo_id]}"
+    @repo = @client.repo "#{params[:organization_id]}/#{params[:repo_id]}"
   end
 end

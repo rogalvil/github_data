@@ -1,8 +1,15 @@
-<%= form_with url: master_from_initial_repo_commits_path(params[:repo_id]), method: :get, local: true do |f| %>
+<%= form_with url: master_organization_repo_commits_path(params[:organization_id],params[:repo_id]), method: :get, local: true do |f| %>
   <%= f.datetime_field :from_at, value: params[:from_at], required: true %>
   <%= f.datetime_field :to_at, value: params[:to_at], required: true %>
   <%= f.submit "Filtrar", class: '' %>
 <% end %>
+
+<div>
+  <b>
+    Total:
+  </b>
+  <%= @commits.count %>
+</div>
 
 <% @commits.each do |commit| %>
   <% #= commit.inspect %>
@@ -11,6 +18,10 @@
     <div>
       commiter
       <%= commit.commit.committer.name %>
+    </div>
+    <div>
+      author
+      <%= commit.commit.author.name %>
     </div>
     <div>
       date

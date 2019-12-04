@@ -1,0 +1,39 @@
+<%= render "info" %>
+<div>
+  <h4>
+  Repositorios
+  </h4>
+</div>
+
+<div>
+  <b>
+  Privados
+  </h4>
+</b>
+<% @private_repos.each do |repo| %>
+  <div>
+    <%= link_to repo.name, organization_repo_path(@organization, repo.name) %>
+  </div>
+<% end %>
+<br />
+<div>
+  <b>
+  Publicos
+  </h4>
+</b>
+<% @public_repos.each do |repo| %>
+  <div>
+    <%= link_to repo.name, organization_repo_path(@organization, repo.name) %>
+  </div>
+<% end %>
+<div>
+  <% #= link_to "Commits", repo_commits_path(params[:id]) %>
+</div>
+
+<div>
+  <% #= link_to "Master commits", master_repo_commits_path(params[:id]) %>
+</div>
+
+<div>
+  <% #= link_to "Branches", repo_branches_path(params[:id]) %>
+</div>

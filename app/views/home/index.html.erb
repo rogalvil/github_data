@@ -1,0 +1,25 @@
+<div>
+  <div>
+    <b>
+      Personal
+    </b>
+  </div>
+  <div>
+    <%= link_to @account_user, organization_path(id: @account_user) %>
+  </div>
+</div>
+<br />
+<div>
+  <div>
+    <b>
+      Organizaciones
+    </b>
+  </div>
+  <div>
+    <% @organizations.each do |organization| %>
+      <div>
+        <%= link_to organization.login, organization_path(id: organization.login) %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,21 +1,12 @@
-
-<% #= @repo.inspect %>
-
-<% #= @rels.inspect %>
-
-<% #= render "branches" %>
-
-<% #= render "commits" %>
-
 <%= render "info" %>
 <div>
-  <%= link_to "Commits", repo_commits_path(params[:id]) %>
+  <%= link_to "Commits", organization_repo_commits_path(params[:organization_id], params[:id]) %>
 </div>
 
 <div>
-  <%= link_to "Master commits from initial commit", master_from_initial_repo_commits_path(params[:id]) %>
+  <%= link_to "Master commits", master_organization_repo_commits_path(params[:organization_id], params[:id]) %>
 </div>
 
 <div>
-  <%= link_to "Branches", repo_branches_path(params[:id]) %>
+  <%= link_to "Branches", organization_repo_branches_path(params[:organization_id], params[:id]) %>
 </div>
