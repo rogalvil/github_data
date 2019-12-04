@@ -6,7 +6,7 @@ class OrganizationsController < ApplicationController
 
     repo_rel = if @organization.nil? || @organization == account_user
       uri = { user: @organization}
-      root.rels[:user_repositories]
+      root.rels[:current_user_repositories]
     else
       uri = { org: @organization}
       root.rels[:organization_repositories]
