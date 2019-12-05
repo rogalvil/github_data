@@ -10,22 +10,20 @@ class CommitsController < ApplicationController
     template = @repo.rels[:commits].get
     all_commits = get_commits(template)
     first_commit = get_first_commit(all_commits.reverse)
-    # Este metodo es siguiendo los parents pero hay un problema cuando hay commits a master no hechos por un PR
-    #@commits = get_master_commits(all_commits, first_commit)+[first_commit]
-    # este metodo asume que el commiter es GitHub pero el problema es que no tomara en cuanta un merge manual a master por parte de otro usuario
-    @commits = get_master_commits_by_committer(all_commits, "GitHub", params[:from_at], params[:to_at])
-    #next_commit = commits.detect{|w| w.parents.count == 2 && w.commit.committer.name == "GitHub" }
-  end
+    @authors = all_commits.map { |x| OpenStruct.new({name: "#{x.commit.author.name} <#{x.commit.author.email}>", email: x.commit.author.email }) }.uniq
 
-  def master_from_last
+    @commits = get_master_commits_by_committer(all_commits, "GitHub", params[:from_at], params[:to_at], params[:author])
+
+
   end
 
   private
 
-  def get_master_commits_by_committer(commits, committer, from_at, to_at)
+  def get_master_commits_by_committer(commits, committer, from_at, to_at, author)
     filter_commits = commits.select { |c| c.commit.committer.email == "noreply@github.com" }
     filter_commits = filter_commits.select { |c| c.commit.committer.date >= from_at} unless from_at.nil?
     filter_commits = filter_commits.select { |c| c.commit.committer.date <= to_at} unless to_at.nil?
+    filter_commits = filter_commits.select { |c| c.commit.author.email == author} unless author.nil?
     filter_commits
   end
 

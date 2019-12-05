@@ -1,6 +1,8 @@
 <%= form_with url: master_organization_repo_commits_path(params[:organization_id],params[:repo_id]), method: :get, local: true do |f| %>
   <%= f.datetime_field :from_at, value: params[:from_at], required: true %>
   <%= f.datetime_field :to_at, value: params[:to_at], required: true %>
+  <%= f.collection_select(:author, @authors, :email, :name) %>
+  
   <%= f.submit "Filtrar", class: '' %>
 <% end %>
 

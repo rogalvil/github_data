@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def set_client
     @client = Octokit::Client.new(
       #access_token: '173c2794fd1c4f74bcdf67e08e9de0917129a2c9'
-      access_token: 'bffe52767d7681370c7a6b6889f15d2f9a108b44'
+      access_token: ''
     )
   end
 

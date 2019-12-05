@@ -11,8 +11,9 @@
   </h4>
 </b>
 <% @private_repos.each do |repo| %>
+  <% #= repo.inspect %>
   <div>
-    <%= link_to repo.name, organization_repo_path(@organization, repo.name) %>
+    <%= link_to repo.name, organization_repo_path(repo.owner.login, repo.name) %>
   </div>
 <% end %>
 <br />
