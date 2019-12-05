@@ -10,9 +10,11 @@ class CommitsController < ApplicationController
     template = @repo.rels[:commits].get
     all_commits = get_commits(template)
     first_commit = get_first_commit(all_commits.reverse)
-    @authors = all_commits.map { |x| OpenStruct.new({name: "#{x.commit.author.name} <#{x.commit.author.email}>", email: x.commit.author.email }) }.uniq
 
     @commits = get_master_commits_by_committer(all_commits, "GitHub", params[:from_at], params[:to_at], params[:author])
+
+    @authors = @commits.map { |x| OpenStruct.new({name: "#{x.commit.author.name} <#{x.commit.author.email}>", email: x.commit.author.email }) }.uniq
+
 
 
   end
